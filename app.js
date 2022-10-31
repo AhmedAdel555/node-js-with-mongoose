@@ -15,16 +15,7 @@ app.use(express.urlencoded({extended: true}));
 const adminRoutes = require('./routes/admin')
 const userRoutes = require('./routes/user')
 app.use(express.static(path.join(__dirname, 'public')))
-const db = require('./util/database')
-
-app.use((req, res, next) => {
-    db.execute('SELECT * from user WHERE id = ?', [1]).then((user) => {
-        req.user = user[0][0]
-        next()
-    }).catch((err) => {
-        console.log(err)
-    })
-})
+const db = require('./util/database').mongoConnect
 
 app.use('/admin',adminRoutes)
 app.use(userRoutes)
@@ -33,5 +24,6 @@ app.use('/',(req, res, next) => {
     res.status(404).render('errorPage', {page_title: 'Page not found' , path: req.originalUrl})
 })
 
-
-app.listen(port)
+db(() => {
+    app.listen(8080)
+})
