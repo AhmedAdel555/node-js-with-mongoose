@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %> 
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="title">
+        <h1> Hello from Admin products page </h1>
+    </div>
+    <main>
+        <div class="all_products">
+            <% all_products.forEach(element => { %>
+                <div>
+                    <h1> <%= element.title %> </h1>
+                    <img src="<%= element.imageURL %> " alt="photo not found">
+                    <span> $ <%= element.price %>  </span>
+                    <div> <%= element.description %>  </div>
+                    <a href="/admin/edit_product/<%= element.id %>?edit=true"> Edit </a>
+                    <form action="/admin/delete-product" method="POST">
+                        <input type="hidden" name="id" value="<%= element.id %> ">
+                        <button type="submit"> delete </button>
+                    </form>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+</body>
+</html>

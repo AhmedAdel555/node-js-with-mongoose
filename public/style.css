@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+header {
+    background-color: rgb(63, 63, 49);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+header nav ul {
+    display: flex;
+}
+header nav ul li{
+    list-style-type: none;
+    margin-left: 15px;
+}
+header nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+header nav ul li a:hover,
+header nav ul li a.active{
+    color: rgba(255, 217, 0, 0.999);
+}
+.title{
+    text-align: center;
+}
+
+.all_products{
+    display: flex;
+}
+
+.all_products > div{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+main img{
+    max-width: 150px;
+    height: 150px;
+}
+
+.all_products div img{
+    max-width: 150px;
+    height: 150px;
+}
+
+.all_products button{
+    background-color:  rgb(63, 63, 49);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+main form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main form input{
+    height: 25px;
+    border: 2px solid rgb(63, 63, 49);
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding-left: 5px;
+}
+main form input[name=description]{
+    height: 100px;
+}
+main form input:focus{
+    outline: none;
+}
+
+.all_products a{
+    text-decoration: none;
+    background-color:  rgb(63, 63, 49);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main form button{
+    background-color:  rgb(63, 63, 49);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.checkOutForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.checkOutForm button{
+    background-color:  rgb(63, 63, 49);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

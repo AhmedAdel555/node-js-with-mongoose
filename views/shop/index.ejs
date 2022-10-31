@@ -1,0 +1,24 @@
+<%- include('../includes/head.ejs') %> 
+<body>
+    <%- include('../includes/nav.ejs') %> 
+    <div class="title">
+        <h1> Hello from Shop page </h1>
+    </div>
+    <main>
+        <div class="all_products">
+            <% all_products.forEach(element => { %>
+                <div>
+                <h1> <%= element.title %> </h1>
+                <a href="/products/<%= element.id %> "> <img src="<%= element.imageURL %> " alt="photo not found"> </a>
+                <span> $ <%= element.price %>  </span>
+                <div> <%= element.description %>  </div>
+                <form action="/add-to-cart" method="POST">
+                    <button> Add to cart </button>
+                    <input type="hidden" name="id" value="<%= element.id %> ">
+                </form>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %> 
+<body>
+    <%- include('../includes/nav.ejs') %> 
+    <main>
+        <% if(!product){%>
+            <h1> this products is not found </h1>
+            <% } else{ %> 
+                <h2> name : <%= product.title %> </h2>
+                <img src="<%= product.imageURL %> " alt="">
+                <h2> price : <%= product.price %>  </h2> 
+                <h2> description : <%= product.description %> </h2> 
+                <form action="/add-to-cart" method="POST">
+                    <button type="submit"> Add to cart </button>
+                    <input type="hidden" name="id" value="<%= product.id %> ">
+                </form>
+            <% } %> 
+    </main>
+</body>
+</html>
