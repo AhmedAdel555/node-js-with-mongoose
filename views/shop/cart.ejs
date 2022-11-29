@@ -10,9 +10,9 @@
                         <div>
                             <h2> title: <%= element.title %>  </h2>
                             <h2> price : <%= element.price %>  </h2>
-                            <h2> quantity: <%= element.qnt %>  </h2>
+                            <h2> quantity: <%= element.quantity %>  </h2>
                             <form action="/delete-product-cart" method="POST">
-                                <input type="hidden" name="id" value="<%= element.id %> ">
+                                <input type="hidden" name="id" value="<%= element._id %>">
                                 <button type="submit"> Delete </button>
                             </form>
                         </div>

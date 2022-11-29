@@ -16,6 +16,16 @@ const adminRoutes = require('./routes/admin')
 const userRoutes = require('./routes/user')
 app.use(express.static(path.join(__dirname, 'public')))
 const db = require('./util/database').mongoConnect
+const User = require('./models/user')
+app.use((req, res, next) => {
+    User.getById('63644d62a8a25a0d571f2ae7')
+    .then((user) => {
+        req.user = user
+        next()
+    }).catch((err) => {
+        console.log(err)
+    })
+})
 
 app.use('/admin',adminRoutes)
 app.use(userRoutes)

@@ -17,10 +17,3 @@ router.post('/delete-product', productController.deleteProduct)
 router.get('/products', productController.productsListAdmin)
 
 module.exports = router;
-
-// module.exports = products;
-
-// module.exports = {
-//     routers : router,
-//     prods : products
-// }

@@ -6,12 +6,12 @@
             <% all_products.forEach(element => { %>
                 <div>
                     <h1> <%= element.title %> </h1>
-                    <a href="/products/<%= element.id %> "> <img src="<%= element.imageURL %> " alt="photo not found"> </a>
+                    <a href="/products/<%= element._id %>"> <img src="<%= element.image %> " alt="photo not found"> </a>
                     <span> $ <%= element.price %>  </span>
                     <div> <%= element.description %>  </div>
                     <form action="/add-to-cart" method="POST">
                         <button> Add to cart </button>
-                        <input type="hidden" name="id" value="<%= element.id %> ">
+                        <input type="hidden" name="id" value="<%= element._id %>">
                     </form>
                 </div>
             <% }); %>

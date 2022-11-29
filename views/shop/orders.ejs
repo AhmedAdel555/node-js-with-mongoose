@@ -5,10 +5,13 @@
         <% if(orders.length != 0){ %>
             <% for(let i = 0 ; i < orders.length ; i++){ %>
                 <p> order  <%= i+1 %>  </p>
-                <% orders[i].forEach((element) => { %> 
-                    <p> ID <%= element.productID%>  </p>
-                    <p> Quantity <%= element.quantity%>  </p>
-            <%  }) } %> 
+                <div class="detiels">
+                    <% orders[i].items.forEach((element) => { %> 
+                        <p> ID <%= element.productID%>  </p>
+                        <p> Quantity <%= element.quantity%>  </p>
+                    <%  }) %>
+                </div>
+                <%  } %>
         <% } else{ %> 
         <h1> No thing there </h1>
         <% } %> 

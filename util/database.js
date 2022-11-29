@@ -28,6 +28,3 @@ const getDB = function(){
 exports.mongoConnect = mongoConnect
 
 exports.getDB = getDB
-
-
-

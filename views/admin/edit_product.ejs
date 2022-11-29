@@ -4,11 +4,11 @@
     <main>
         <form action='/admin/<% if(!edit){%>product<% }else{%>Edit-product<%}%>' method='POST'> 
             <input  type='text' name='title' placeholder="title" value="<% if(edit) {%><%= product.title%><% }%>">
-            <input  type='url' name='image' placeholder="url image" value="<% if(edit) {%><%= product.imageURL%><% }%>">
+            <input  type='url' name='image' placeholder="url image" value="<% if(edit) {%><%= product.image%><% }%>">
             <input  type='number' name='price' placeholder="price" step="0.01" value="<% if(edit) {%><%= product.price%><% }%>">
             <input  type='text' name='description' placeholder="description" value="<% if(edit) {%><%= product.description%><% }%>">
             <% if(edit){%>
-                <input type="hidden" value="<%=product.id%>" name="id">
+                <input type="hidden" value="<%=product._id%>" name="id">
             <% } %>
             <button type='submit'><%if(edit) {%>Update product<% }else { %>Add Prosuct<% } %></button> 
         </form>
