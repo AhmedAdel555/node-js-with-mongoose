@@ -10,6 +10,12 @@ header {
     align-items: center;
     margin-bottom: 20px;
 }
+header nav{
+    padding: 0 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 header nav ul {
     display: flex;
 }
@@ -116,4 +122,15 @@ main form button{
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.errorMessage{
+    background-color: rgb(240, 140, 140);
+    color: red;
+    width: 50%;
+    margin: 10px auto;
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px;
 }

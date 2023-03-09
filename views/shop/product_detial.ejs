@@ -6,13 +6,16 @@
             <h1> this products is not found </h1>
             <% } else{ %> 
                 <h2> name : <%= product.title %> </h2>
-                <img src="<%= product.image %> " alt="">
+                <img src="/<%=product.image%>" alt="">
                 <h2> price : <%= product.price %>  </h2> 
-                <h2> description : <%= product.description %> </h2> 
+                <h2> description : <%= product.description %> </h2>
+                <%  if(isAuthenticated) { %>
                 <form action="/add-to-cart" method="POST">
                     <button type="submit"> Add to cart </button>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                     <input type="hidden" name="id" value="<%= product._id %>">
                 </form>
+                <% } %> 
             <% } %> 
     </main>
 </body>

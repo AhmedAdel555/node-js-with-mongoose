@@ -8,11 +8,12 @@
                 <ul>
                     <li>
                         <div>
-                            <h2> title: <%= element.title %>  </h2>
-                            <h2> price : <%= element.price %>  </h2>
+                            <h2> title: <%= element.productId.title %>  </h2>
+                            <h2> price : <%= element.productId.price %>  </h2>
                             <h2> quantity: <%= element.quantity %>  </h2>
                             <form action="/delete-product-cart" method="POST">
-                                <input type="hidden" name="id" value="<%= element._id %>">
+                                <input type="hidden" name="id" value="<%= element.productId._id %>">
+                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                                 <button type="submit"> Delete </button>
                             </form>
                         </div>
@@ -21,8 +22,9 @@
                 </ul>
            <%  }) %> 
            <h2> total price : <%= totalPrice %>  </h2>
-           <form class="checkOutForm" action="/check-out" method="POST">
-            <button type="submit"> Check out </button>
+           <form class="checkOutForm" action="/check-out" method="post">
+                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                <button type="submit"> Check out </button>
             </form>
         <% } else { %>
             <h1> No products Here </h1>

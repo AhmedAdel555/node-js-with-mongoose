@@ -1,0 +1,17 @@
+<%- include('../includes/head.ejs') %>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <main>
+    <% if(errorMessage){ %>
+        <div class="errorMessage"> <%= errorMessage %>  </div>
+    <% } %>
+    <form action="/signup" method="POST" novalidate>
+        <input  type='email' name='email' placeholder="Email" value="<%=oldInput.email%>">
+        <input  type='text' name='userName' placeholder="User Name" value="<%=oldInput.userName%>">
+        <input  type='password' name='password' placeholder="Password" >
+        <input  type='password' name='confirmedPassword' placeholder="confirm Password" >
+        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+        <button type='submit'>sign up</button> 
+    </form>
+    </main>
+</body>

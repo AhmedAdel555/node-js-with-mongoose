@@ -5,26 +5,57 @@
 
 const express = require('express')
 const app = express()
-const port = 8080
+const session = require('express-session')
+const mongoSessions = require('connect-mongodb-session')(session)
+const mongoose = require('mongoose')
+const csrf = require('csurf')
+const User = require('./models/user')
+const port = 3300
 const path = require('path')
+const flash = require('connect-flash');
+
 
 app.set('view engine', 'ejs')
-
 app.use(express.urlencoded({extended: true}));
-
 const adminRoutes = require('./routes/admin')
 const userRoutes = require('./routes/user')
 app.use(express.static(path.join(__dirname, 'public')))
-const db = require('./util/database').mongoConnect
-const User = require('./models/user')
+app.use('/images', express.static(path.join(__dirname, 'images')) )
+
+const store = new mongoSessions({
+    uri: 'mongodb+srv://ahmedadel:Ahmed3ff72@cluster0.wktfawr.mongodb.net/shop',
+    collection: "sessions"
+})
+
+app.use(
+    session({
+        secret: "the secret", 
+        resave: false, 
+        saveUninitialized: false,
+        store: store
+    })
+)
+
+app.use(csrf())
+app.use(flash())
 app.use((req, res, next) => {
-    User.getById('63644d62a8a25a0d571f2ae7')
+    if(!req.session.user){
+        return next()
+    }
+    User.findById(req.session.user._id)
     .then((user) => {
+        console.log(req)
         req.user = user
         next()
     }).catch((err) => {
         console.log(err)
     })
+})
+
+app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.session.loginIn
+    res.locals.csrfToken = req.csrfToken()
+    next()
 })
 
 app.use('/admin',adminRoutes)
@@ -33,7 +64,12 @@ app.use('/',(req, res, next) => {
     // res.status(404).sendFile(path.join(__dirname ,'views', 'errorPage.html'))
     res.status(404).render('errorPage', {page_title: 'Page not found' , path: req.originalUrl})
 })
-
-db(() => {
-    app.listen(8080)
+app.use((error, req, res, next) => {
+    res.status(error.httpStatusCode).render('errorServerSide', {page_title: 'error', path:req.originalUrl})
+})
+mongoose.connect('mongodb+srv://ahmedadel:Ahmed3ff72@cluster0.wktfawr.mongodb.net/shop?retryWrites=true&w=majority')
+.then((result) => {
+    app.listen(port)
+}).catch((err) => {
+    throw err
 })

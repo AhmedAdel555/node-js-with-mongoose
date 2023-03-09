@@ -2,15 +2,17 @@
 <body>
     <%- include('../includes/nav.ejs') %> 
     <main>
-        <form action='/admin/<% if(!edit){%>product<% }else{%>Edit-product<%}%>' method='POST'> 
+        <form action='/admin/<%if(!edit){%>product<% }else{%>Edit-product<%}%>' method='POST' enctype="multipart/form-data">
             <input  type='text' name='title' placeholder="title" value="<% if(edit) {%><%= product.title%><% }%>">
-            <input  type='url' name='image' placeholder="url image" value="<% if(edit) {%><%= product.image%><% }%>">
+            <!-- <input  type='url' name='image' placeholder="url image" value="<% if(edit) {%><%= product.image%><% }%>"> -->
+            <input type="file" name="image" accept="image/*">
             <input  type='number' name='price' placeholder="price" step="0.01" value="<% if(edit) {%><%= product.price%><% }%>">
             <input  type='text' name='description' placeholder="description" value="<% if(edit) {%><%= product.description%><% }%>">
             <% if(edit){%>
                 <input type="hidden" value="<%=product._id%>" name="id">
             <% } %>
-            <button type='submit'><%if(edit) {%>Update product<% }else { %>Add Prosuct<% } %></button> 
+            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+            <button type='submit'><%if(edit) {%>Update product<% }else { %>Add Product<% } %></button> 
         </form>
     </main>
 </body>

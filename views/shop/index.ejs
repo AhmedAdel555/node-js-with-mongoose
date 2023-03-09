@@ -9,13 +9,16 @@
             <% all_products.forEach(element => { %>
                 <div>
                 <h1> <%= element.title %> </h1>
-                <a href="/products/<%= element._id %>"> <img src="<%= element.image %> " alt="photo not found"> </a>
+                <a href="/products/<%= element._id %>"> <img src="/<%=element.image%>" alt="photo not found"> </a>
                 <span> $ <%= element.price %>  </span>
                 <div> <%= element.description %>  </div>
+                <%  if(isAuthenticated) { %>
                 <form action="/add-to-cart" method="POST">
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                     <button> Add to cart </button>
                     <input type="hidden" name="id" value="<%= element._id %>">
                 </form>
+                <% } %> 
                 </div>
             <% }); %>
         </div>

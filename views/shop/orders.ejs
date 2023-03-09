@@ -6,8 +6,8 @@
             <% for(let i = 0 ; i < orders.length ; i++){ %>
                 <p> order  <%= i+1 %>  </p>
                 <div class="detiels">
-                    <% orders[i].items.forEach((element) => { %> 
-                        <p> ID <%= element.productID%>  </p>
+                    <% orders[i].products.forEach((element) => { %> 
+                        <p> ID <%= element.product.title%>  </p>
                         <p> Quantity <%= element.quantity%>  </p>
                     <%  }) %>
                 </div>
