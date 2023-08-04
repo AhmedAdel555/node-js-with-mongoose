@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/images', express.static(path.join(__dirname, 'images')) )
 
 const store = new mongoSessions({
-    uri: 'mongodb+srv://ahmedadel:Ahmed3ff72@cluster0.wktfawr.mongodb.net/shop',
+    uri: 'mongodb+srv://ahmedadel:***********@cluster0.wktfawr.mongodb.net/shop',
     collection: "sessions"
 })
 
