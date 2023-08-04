@@ -67,7 +67,7 @@ app.use('/',(req, res, next) => {
 app.use((error, req, res, next) => {
     res.status(error.httpStatusCode).render('errorServerSide', {page_title: 'error', path:req.originalUrl})
 })
-mongoose.connect('mongodb+srv://ahmedadel:Ahmed3ff72@cluster0.wktfawr.mongodb.net/shop?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://ahmedadel:****************@cluster0.wktfawr.mongodb.net/shop?retryWrites=true&w=majority')
 .then((result) => {
     app.listen(port)
 }).catch((err) => {
